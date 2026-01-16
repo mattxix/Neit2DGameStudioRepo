@@ -1,20 +1,25 @@
+using Mono.Cecil;
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-
     public float h, v;
     Vector2 dir;
-    Rigidbody2D rb2d;
+    public float moveSpeed = 5f;
+    public Rigidbody2D rb2d;
+    public GunScript weapon;
     bool facingLeft = false;
     SpriteRenderer spr;
     Animator anim;
     bool isAttacking;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Vector2 moveDirection;
+    Vector2 mousePosition;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -22,13 +27,34 @@ public class PlayerScript : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //transform.Translate(dir * Time.deltaTime * 10 );
+        
+
         rb2d.MovePosition(rb2d.position + dir * Time.fixedDeltaTime * 10);
         FlipPlayer();
         anim.SetFloat("Moving", dir.magnitude);
+
+        if (Input.GetMouseButton(0))
+        {
+            weapon.Fire();
+        }
+
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Rotate weapon toward mouse
+        if (weapon != null)
+        {
+            Vector2 weaponPos = weapon.transform.position;
+            Vector2 aimDir = mousePosition - weaponPos;
+            float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
+            weapon.transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        rb2d.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
     public void MovePlayer(InputAction.CallbackContext ctx)
@@ -65,11 +91,9 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        
     }
 }
 
