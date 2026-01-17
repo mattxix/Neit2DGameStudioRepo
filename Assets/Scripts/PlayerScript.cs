@@ -29,9 +29,6 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        
-
-        rb2d.MovePosition(rb2d.position + dir * Time.fixedDeltaTime * 10);
         FlipPlayer();
         anim.SetFloat("Moving", dir.magnitude);
 
@@ -54,7 +51,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2d.linearVelocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        rb2d.MovePosition(rb2d.position + dir * moveSpeed * Time.fixedDeltaTime);
     }
 
     public void MovePlayer(InputAction.CallbackContext ctx)
