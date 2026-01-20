@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -7,4 +8,14 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        StartCoroutine(destroyAuto());
+    }
+
+    IEnumerator destroyAuto()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
 }

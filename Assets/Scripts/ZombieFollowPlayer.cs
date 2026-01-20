@@ -13,6 +13,8 @@ public class ZombieFollowPlayer : MonoBehaviour
         // Required for 2D to prevent the agent from trying to rotate in 3D space
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.SetDestination(target.position);
+
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class ZombieFollowPlayer : MonoBehaviour
         {
             // Update the agent's destination to the player's current position
             agent.SetDestination(target.position);
-            Debug.Log("Test");
+            Debug.Log("agent destination" + target.position);
         }
     }
 }
