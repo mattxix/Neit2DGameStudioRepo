@@ -2,28 +2,51 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieFollowPlayer : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private Transform target; // Drag your player here
+{ 
+    [SerializeField] private Transform target; 
     private NavMeshAgent agent;
+    public int zombieHealth = 3;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        // Required for 2D to prevent the agent from trying to rotate in 3D space
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.SetDestination(target.position);
-
     }
 
     void Update()
     {
         if (target != null)
         {
-            // Update the agent's destination to the player's current position
             agent.SetDestination(target.position);
-            Debug.Log("agent destination" + target.position);
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        zombieHealth -= amount;
+        if (zombieHealth <= 0)
+        {
+            var waveManager = FindObjectOfType<WaveManager>();
+            if (waveManager != null)
+            {
+                waveManager.OnZombieKilled();
+            }
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            TakeDamage(1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 }
