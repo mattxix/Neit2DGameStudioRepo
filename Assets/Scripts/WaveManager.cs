@@ -78,7 +78,7 @@ public class WaveManager : MonoBehaviour
     public void OnZombieKilled()
     {
         zombiesKilled++;
-        if (zombiesKilled >= zombiesSpawned && isWaveActive)
+        if (zombiesKilled >= enemiesPerWave && isWaveActive)
         {
             StartCoroutine(EndWave());
         }

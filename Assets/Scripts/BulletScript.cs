@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Bullet collsion");
         Destroy(gameObject);
     }
 
@@ -13,9 +16,11 @@ public class BulletScript : MonoBehaviour
         StartCoroutine(destroyAuto());
     }
 
-    IEnumerator destroyAuto()
+    public IEnumerator destroyAuto()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
+        Debug.Log("Bullet Destroyed");
         Destroy(gameObject);
+
     }
 }
