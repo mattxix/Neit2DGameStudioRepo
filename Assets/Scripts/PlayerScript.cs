@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     Vector2 dir;
     public float moveSpeed = 5f;
     public Rigidbody2D rb2d;
-    public GunScript weapon;
+    public ShotGunScript weapon;
     bool facingLeft = false;
     SpriteRenderer spr;
     Animator anim;

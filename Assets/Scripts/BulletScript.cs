@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour
 
     public IEnumerator destroyAuto()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.25f);
         Debug.Log("Bullet Destroyed");
         Destroy(gameObject);
 
