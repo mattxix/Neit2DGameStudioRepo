@@ -20,6 +20,15 @@ public class PlayerScript : MonoBehaviour
     Vector2 moveDirection;
     Vector2 mousePosition;
 
+    [Header("Dash")]
+    public float dashDistance = 3f;
+    public float dashDuration = 0.1f;
+    public float dashCooldown = 0.5f;
+
+    private Vector2 lastMoveDir = Vector2.right;
+    private bool isDashing;
+    private bool canDash = true;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -51,17 +60,60 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDashing) return;
+
         rb2d.MovePosition(rb2d.position + dir * moveSpeed * Time.fixedDeltaTime);
     }
 
     public void MovePlayer(InputAction.CallbackContext ctx)
     {
-        h = ctx.ReadValue<Vector2>().x;
-        v = ctx.ReadValue<Vector2>().y;
+        Vector2 input = ctx.ReadValue<Vector2>();
+        h = input.x;
+        v = input.y;
 
-        dir = new Vector2(h, v);
-        Debug.Log($"h:{h}, v:{v}");
+        dir = input.normalized;
+
+        if (dir != Vector2.zero)
+        {
+            lastMoveDir = dir;
+        }
     }
+
+    public void Dash(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && canDash && !isDashing)
+        {
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+
+    IEnumerator DashCoroutine()
+    {
+        canDash = false;
+        isDashing = true;
+
+        Vector2 startPos = rb2d.position;
+        Vector2 targetPos = startPos + lastMoveDir * dashDistance;
+
+        float elapsed = 0f;
+
+        while (elapsed < dashDuration)
+        {
+            rb2d.MovePosition(Vector2.Lerp(startPos, targetPos, elapsed / dashDuration));
+            elapsed += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        rb2d.MovePosition(targetPos);
+
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+
 
     public void PlayerAttack(InputAction.CallbackContext ctx)
     {
