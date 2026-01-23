@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class WaveManager : MonoBehaviour
     int zombiesKilled;
     public bool isWaveActive = true;
     public Canvas WaveCanvas;
-    public TMP_Text waveText; 
+    public TMP_Text waveText;
+    public Button StartNight;
 
     void Start()
     {
+        StartNight.gameObject.SetActive(false);
         isWaveActive = true;
         enemiesPerWave = 5;
         if (waveText != null)
@@ -33,6 +36,7 @@ public class WaveManager : MonoBehaviour
             zombiesKilled = 0;
             zombiesSpawned = 0; 
             StartCoroutine(DisplayWaveTextAndSpawn());
+
         }
     }
 
@@ -59,7 +63,7 @@ public class WaveManager : MonoBehaviour
         isWaveActive = false;
         if (waveText != null)
         {
-            waveText.text = "Wave Survived ";
+            waveText.text = "Wave " + waveNumber + " Survived ";
             waveText.gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(4f);
@@ -72,7 +76,9 @@ public class WaveManager : MonoBehaviour
 
     private void PeaceTime()
     {
-        // if player initiates next wave, StartWave();
+        waveText.gameObject.SetActive(true);
+        StartNight.gameObject.SetActive(true);
+        waveText.text = "Peacetime ";
     }
 
     public void OnZombieKilled()

@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         FlipPlayer();
-        anim.SetFloat("Moving", dir.magnitude);
+     //   anim.SetFloat("Moving", dir.magnitude);
 
         if (Input.GetMouseButton(0))
         {
