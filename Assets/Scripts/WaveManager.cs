@@ -7,9 +7,8 @@ public class WaveManager : MonoBehaviour
 {
     [Header("Wave Settings")]
     int waveNumber = 0;
-    int enemiesPerWave;
-    int zombiesSpawned;
-    int zombiesKilled;
+    int enemiesPerWave = 0;
+    int zombiesKilled = 0;
     public bool isWaveActive = true;
     public Canvas WaveCanvas;
     public TMP_Text waveText;
@@ -19,7 +18,9 @@ public class WaveManager : MonoBehaviour
     {
         StartNight.gameObject.SetActive(false);
         isWaveActive = true;
+        waveNumber = 0;
         enemiesPerWave = 5;
+        zombiesKilled = 0;
         if (waveText != null)
         {
             waveText.gameObject.SetActive(false);
@@ -32,11 +33,11 @@ public class WaveManager : MonoBehaviour
         if (isWaveActive)
         {
             waveNumber++;
-            enemiesPerWave += 5;
             zombiesKilled = 0;
-            zombiesSpawned = 0; 
+            // Only increment after the first wave
+            if (waveNumber > 1)
+                enemiesPerWave += 5;
             StartCoroutine(DisplayWaveTextAndSpawn());
-
         }
     }
 
@@ -54,7 +55,8 @@ public class WaveManager : MonoBehaviour
         {
             waveText.gameObject.SetActive(false);
         }
-
+        // Start spawning zombies for this wave
+        FindObjectOfType<ZombieSpawner>()?.StartNewWave(enemiesPerWave);
     }
 
     IEnumerator EndWave()
@@ -71,6 +73,7 @@ public class WaveManager : MonoBehaviour
         {
             waveText.gameObject.SetActive(false);
         }
+        FindObjectOfType<ZombieSpawner>()?.StopSpawning();
         PeaceTime();
     }
 
@@ -88,10 +91,5 @@ public class WaveManager : MonoBehaviour
         {
             StartCoroutine(EndWave());
         }
-    }
-
-    public void IncrementZombiesSpawned()
-    {
-        zombiesSpawned++;
     }
 }

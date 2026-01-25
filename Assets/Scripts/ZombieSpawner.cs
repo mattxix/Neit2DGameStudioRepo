@@ -5,11 +5,11 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject zombiePrefab;
     public Transform[] spawnPoints;
     public Transform playerTransform; // Assign in Inspector
-    public bool spawnZombies = true;
-    public float spawnInterval = 5f;
-    public int zombiesPerWave = 5;
+    public float spawnInterval = 1.0f;
+    private int zombiesPerWave = 0;
     private float timer;
     private int zombiesSpawnedThisWave;
+    private bool spawnZombies = false;
 
     void Start()
     {
@@ -45,5 +45,18 @@ public class ZombieSpawner : MonoBehaviour
         }
 
         zombiesSpawnedThisWave++;
+    }
+
+    public void StartNewWave(int zombieCount)
+    {
+        zombiesPerWave = zombieCount;
+        zombiesSpawnedThisWave = 0;
+        timer = 0f;
+        spawnZombies = true;
+    }
+
+    public void StopSpawning()
+    {
+        spawnZombies = false;
     }
 }
