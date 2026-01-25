@@ -5,7 +5,7 @@ public class ZombieSpawner : MonoBehaviour
 {
     public GameObject zombiePrefab;
     public Transform[] spawnPoints;
-    public Transform playerTransform; // Assign in Inspector
+    public Transform playerTransform; 
     public float spawnInterval = 1.0f;
     private int zombiesPerWave = 0;
     private float timer;
@@ -21,7 +21,9 @@ public class ZombieSpawner : MonoBehaviour
     void Update()
     {
         if (!spawnZombies || spawnPoints.Length == 0)
-            return;
+        { 
+        return;
+        }
 
         timer += Time.deltaTime;
         if (timer >= spawnInterval && zombiesSpawnedThisWave < zombiesPerWave)
@@ -49,14 +51,17 @@ public class ZombieSpawner : MonoBehaviour
        
 
         zombiesSpawnedThisWave++;
+        Debug.Log("Spawned zombie " + zombiesSpawnedThisWave + " at " + spawnPoint.position);
     }
 
     public void StartNewWave(int zombieCount)
     {
+        spawnZombies = true;
+        Debug.Log("Starting new wave with " + zombieCount + " zombies.");
         zombiesPerWave = zombieCount;
         zombiesSpawnedThisWave = 0;
         timer = 0f;
-        spawnZombies = true;
+        Debug.Log("Zombies spawned this wave: " + zombiesSpawnedThisWave);
     }
 
     public void StopSpawning()

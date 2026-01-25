@@ -27,7 +27,6 @@ public class ZombieFollowPlayer : MonoBehaviour
         zombieHealth -= amount;
         if (zombieHealth <= 0)
         {
-            // Notify WaveManager before destroying the zombie
             WaveManager waveManager = FindObjectOfType<WaveManager>();
             if (waveManager != null)
             {

@@ -16,8 +16,9 @@ public class GunScript : MonoBehaviour
     public void Fire()
     {
         if (!canFire)
+        { 
             return;
-
+        }
         StartCoroutine(FireWithDelay());
     }
 
