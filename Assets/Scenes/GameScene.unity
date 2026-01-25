@@ -1259,7 +1259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &456802705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+uuPVxUhAIAAEUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWRAWPcW+sQ0kMSJrSTiy/CWmMNRvJIcoBk+O9dyTZ2KRfWb7/evl37iwhpKsis0mst+LPiQL6PiLPJt1HvfIIz2yu5FZ/QxbwLbgsXxHzMG7NCIR64NKOOYLXIfsh96YIpgrUUudLHFd9Doow1COesNIAurazLlgh9jcgZ/8axS7mgNY2c9YlWTEdXNDOQFvQglE6CaUgpjYKwzaET6gA6peGiTR7PJ7H/hVNfpZZZyY4VcDdSXwyj2hpo+UCJ47Yx2Mj1V2UpTMuW2Evl1UhYZWqcFQO4YDi9pxhMZggUIPaFdbMM01/z3IBtxdHs8iA0ytjUJT9Vo+2RmUPD7oOVteu0mHtaTc3n/9zjwLtzrY5PXduAuha2ENnhjV0yZuxA+yH8MGDuNTqx8sB2JbwXIF/UWqtacnRaXbvU2sD0oX+8TZYUkB16vKF6B9ZVL/pt1ZPZch4swyhejWnULQ4Hunolzkkpjju/h3kDbEvl1ffHAho39QvZ+1MybV1EHaU/Bn6z/fDmWsej0Maiqx1ZOq47VWsXSlZeQDdabROlJXi4naACyUp72WAZe7/OO9+g7Z3nkbm3q23e+rqX5i7Fw308pXeujTrdNmcKdXoGU7zWthQSetLO8YI6JUrK5tqGmnRp21rnLBuk7WvB/70zsoQwDmbZLl7OdhymfJyHHKI4WkQR29FFkBF/iELinKzcNERbeXBrsi8u8ei6j85orVnlL59rdlqLz6MaEhQyV9tMA8jXpsSNOWjsgq8pX3GBCm3BWiH9wslXSkqVHYCnt56pH3V1tpqlfZWUVOJDWYekJPGfmZQ4+HbZGw0fAk6ueVfsSq5/AVBLAwQUAAAICAAAmJ/r2rLHUW0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0kkWqqaWhcXKSpYVxUkqqUYpummlKqrmluZm5eWKSgZlhslIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rrj1cVIQCAABFBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/r2rLHUW0AAAB4AAAACQAkAAAAAAAAAAAAAADRAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAIkDAAAAAA==
+    dataString: UEsDBBQAAAgIAACYn+vGaBFffwIAADsFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWRAWPcW+sQ0kMSJrSTiy/CWmMNRvJIcoBk+O9dyTZ26Ynl7b79eLvyFxHSVJBZpdda8GfFgXwfEWeTb6Pe+QRntldyKz6hi3kX3BYuiPmYN2aFQjxwNKOOYLXIfsh96YIpgrUUudLHFd9Doow1COesNIAuraxjS4S+RuSMP+PYUS5oTSNnfaIV09EVzQykBT0IpZNgGlJKoyBsOXRCHUCnNFy05HHoybXMSnasgLtJ+hzzSdxS0fKBEqdsYzC/K6vKUpi2SWIvlRchYZWpcUQM4ILh0L6zYDJDoACxL6wbYUh/zXMDttVEs8uD0Khek5f8VI2kR2YOTXcfrKxdpcXct9XkfP7PPQ68O9fq+NSVDagrYQuRHd7YJWPGDiQfwg+Dzr1GJ1Ye2K6E9wLki1prVUuOTqtrR60NTB/6v7fJkgKyQ483rd6BddWLftvwZLacB8swildjGnX7woGuXolzUorjzu9h3gDbUnn1/Y2Axk39wu79BZk2L6KupT8GfrP98NRax6PQxqKrHVm6Xneq1i6UrLyAbrTaJkpL8HA7QQWSlfaywTT2fp13vkHZO88jc4+qLd76urdyR/FwH0/pnWujTrfNmUKdnsEUr7UthYS+aed4QZ0SJWVzbUNNOtq21jnLBrR9Lfi/d0aWEMbBLNvFy9mOw5SP85BDFEeLKGI7uggy4g9RSJyTlZum0VYe3Jrsk0s8uu5bM1prVvnL55qd1uLzqAaSC5mrbaYB5GuT4dY4aCyCr5SvuECBtmCtkH7f5CslpcoOwNNbotRPujpbzdI+S0oq8aGsQ1KS+I9LShx8O+yNhg8BJ1e8S3Yl179QSwMEFAAACAgAAJif69qyx1FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJFqqmloXFykqWFcVJKqlGKbpppSqq5pbmZuXlikoGZYbJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAJif68ZoEV9/AgAAOwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif69qyx1FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAzAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACEAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -4133,7 +4133,8 @@ MonoBehaviour:
   isWaveActive: 1
   WaveCanvas: {fileID: 614080089}
   waveText: {fileID: 272075781}
-  StartNight: {fileID: 0}
+  StartNight: {fileID: 350726896}
+  ZombieSpawner: {fileID: 1942736928}
 --- !u!4 &1644021363
 Transform:
   m_ObjectHideFlags: 0
@@ -4286,11 +4287,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &1773500236 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2904963708644376452, guid: 852a88d731c280c43b513a6fa013db8a, type: 3}
-  m_PrefabInstance: {fileID: 278482790786185523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878116247
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,7 +4718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b57657e9dcf70048b299db4d68f260c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 1773500236}
+  zombiePrefab: {fileID: 2904963708644376452, guid: 852a88d731c280c43b513a6fa013db8a, type: 3}
   spawnPoints:
   - {fileID: 456802706}
   - {fileID: 1973238905}
@@ -4730,9 +4726,7 @@ MonoBehaviour:
   - {fileID: 1094272739}
   - {fileID: 64895215}
   playerTransform: {fileID: 922813491}
-  spawnZombies: 1
   spawnInterval: 5
-  zombiesPerWave: 5
 --- !u!4 &1942736929
 Transform:
   m_ObjectHideFlags: 0

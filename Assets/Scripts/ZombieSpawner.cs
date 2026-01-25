@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
@@ -37,12 +38,15 @@ public class ZombieSpawner : MonoBehaviour
 
         Vector3 offset = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0f);
         GameObject zombie = Instantiate(zombiePrefab, spawnPoint.position + offset, spawnPoint.rotation);
-
-        ZombieFollowPlayer followScript = zombie.GetComponent<ZombieFollowPlayer>();
+        
+        AIDestinationSetter followScript = zombie.GetComponent<AIDestinationSetter>();
+        
+        
         if (followScript != null && playerTransform != null)
         {
-            followScript.SetTarget(playerTransform);
+            followScript.target = playerTransform;
         }
+       
 
         zombiesSpawnedThisWave++;
     }

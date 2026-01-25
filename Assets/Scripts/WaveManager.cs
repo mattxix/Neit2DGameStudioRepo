@@ -13,6 +13,7 @@ public class WaveManager : MonoBehaviour
     public Canvas WaveCanvas;
     public TMP_Text waveText;
     public Button StartNight;
+    public ZombieSpawner ZombieSpawner;
 
     void Start()
     {
@@ -56,7 +57,7 @@ public class WaveManager : MonoBehaviour
             waveText.gameObject.SetActive(false);
         }
         // Start spawning zombies for this wave
-        FindObjectOfType<ZombieSpawner>()?.StartNewWave(enemiesPerWave);
+        ZombieSpawner.StartNewWave(enemiesPerWave);
     }
 
     IEnumerator EndWave()
@@ -73,7 +74,7 @@ public class WaveManager : MonoBehaviour
         {
             waveText.gameObject.SetActive(false);
         }
-        FindObjectOfType<ZombieSpawner>()?.StopSpawning();
+        ZombieSpawner.StopSpawning();
         PeaceTime();
     }
 

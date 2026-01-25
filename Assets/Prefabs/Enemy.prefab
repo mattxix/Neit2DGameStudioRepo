@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8855962364016106391}
   - component: {fileID: 5736634512392340185}
-  - component: {fileID: 2511695594889201209}
+  - component: {fileID: 2017029968719872795}
   - component: {fileID: 3317667725173015717}
   - component: {fileID: 1817985990627736752}
   - component: {fileID: 2429821494284619576}
+  - component: {fileID: 2702415919939511121}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &2511695594889201209
+--- !u!114 &2017029968719872795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,39 +75,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2904963708644376452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
-  radius: 0.11
-  height: 2
-  canMove: 1
-  maxSpeed: 1
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  repathRateCompatibility: NaN
-  canSearchCompability: 0
-  orientation: 1
-  enableRotation: 0
+  version: 4
   autoRepath:
     mode: 2
     interval: 0.5
     sensitivity: 10
     maximumInterval: 2
     visualizeSensitivity: 0
+  canMove: 1
+  speed: 0.75
+  orientation: 1
+  enableRotation: 0
+  rotationSpeed: 10
+  interpolatePathSwitches: 1
+  switchPathInterpolationSpeed: 5
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 1.2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
 --- !u!114 &3317667725173015717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +143,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00042510033, y: -0.01966472}
+  m_Offset: {x: -0.00020730495, y: -0.019032355}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -165,7 +153,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.11074257, y: 0.21780166}
+  m_Size: {x: 0.11425805, y: 0.2078479}
   m_EdgeRadius: 0
 --- !u!114 &2429821494284619576
 MonoBehaviour:
@@ -180,6 +168,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieHealth: 3
+--- !u!50 &2702415919939511121
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904963708644376452}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &3873437760437876778
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,4 +295,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1373c6b45e5c9408438b8be2a44942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPath: {fileID: 2511695594889201209}
+  aiPath: {fileID: 0}
