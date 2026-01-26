@@ -3,31 +3,28 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour
 {
     public int zombieHealth = 3;
-    
-    void Start()
-    {
-        
-    }
+    private WaveManager waveManager;
+    private bool isDead = false;
 
-    
-    void Update()
+    public void Initialize(WaveManager manager)
     {
-        
+        waveManager = manager;
     }
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return; // Prevent multiple kills
+
         zombieHealth -= amount;
+
         if (zombieHealth <= 0)
         {
-            var waveManager = FindObjectOfType<WaveManager>();
-            if (waveManager != null)
-            {
-                waveManager.OnZombieKilled();
-            }
+            isDead = true; 
+            waveManager?.OnZombieKilled();
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))

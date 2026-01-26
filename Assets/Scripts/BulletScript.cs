@@ -11,6 +11,7 @@ public class BulletScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+
     private void Start()
     {
         StartCoroutine(destroyAuto());

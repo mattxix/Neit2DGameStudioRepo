@@ -11,7 +11,9 @@ public class ZombieSpawner : MonoBehaviour
     private float timer;
     private int zombiesSpawnedThisWave;
     private bool spawnZombies = false;
+    private WaveManager waveManager;
 
+    
     void Start()
     {
         timer = 0f;
@@ -33,6 +35,12 @@ public class ZombieSpawner : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        if (waveManager == null)
+            waveManager = FindFirstObjectByType<WaveManager>();
+    }
+
     void SpawnZombieAtUniquePoint()
     {
         int spawnIndex = zombiesSpawnedThisWave % spawnPoints.Length;
@@ -40,15 +48,23 @@ public class ZombieSpawner : MonoBehaviour
 
         Vector3 offset = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0f);
         GameObject zombie = Instantiate(zombiePrefab, spawnPoint.position + offset, spawnPoint.rotation);
-        
+
+
+        ZombieHealth zombieScript = zombie.GetComponent<ZombieHealth>();
+        if (zombieScript == null)
+        {
+            Debug.LogError("Zombie prefab is missing Zombie script!");
+            return;
+        }
+        zombieScript.Initialize(waveManager);
+
         AIDestinationSetter followScript = zombie.GetComponent<AIDestinationSetter>();
-        
-        
         if (followScript != null && playerTransform != null)
         {
             followScript.target = playerTransform;
         }
-       
+
+
 
         zombiesSpawnedThisWave++;
         Debug.Log("Spawned zombie " + zombiesSpawnedThisWave + " at " + spawnPoint.position);

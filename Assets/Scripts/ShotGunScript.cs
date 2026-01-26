@@ -25,19 +25,25 @@ public class ShotGunScript : MonoBehaviour
     {
         shotGunCanFire = false;
 
-        float angleStep = spreadAngle2 / (pelletCount2 - 1);
-        float startAngle = -spreadAngle2 / 2f;
-
+        float angleStep = spreadAngle2 / (pelletCount2 - 1); 
+        float startAngle = -spreadAngle2 / 2f;               
 
         for (int i = 0; i < pelletCount2; i++)
         {
-            float currentAngle = Random.Range(1, spreadAngle2);
-            Quaternion rotation = firePoint2.rotation * Quaternion.Euler(0, 0, currentAngle);
+            // Centered angle + small random deviation if desired
+            float angle = startAngle + angleStep * i;
+            // Optional: small random offset to make spread less perfect
+            float randomOffset = Random.Range(-angleStep / 2f, angleStep / 2f);
+            angle += randomOffset;
+
+            Quaternion rotation = firePoint2.rotation * Quaternion.Euler(0, 0, angle);
+
             GameObject bullet = Instantiate(bulletPrefab2, firePoint2.position, rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(rotation * Vector2.up * Random.Range(2, fireForce2), ForceMode2D.Impulse);
+            bullet.GetComponent<Rigidbody2D>().AddForce(rotation * Vector2.up * Random.Range(2f, fireForce2), ForceMode2D.Impulse);
         }
 
         yield return new WaitForSeconds(fireRate2);
         shotGunCanFire = true;
     }
+
 }

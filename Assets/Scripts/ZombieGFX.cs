@@ -3,17 +3,27 @@ using Pathfinding;
 
 public class ZombieGFX : MonoBehaviour
 {
-    public AIPath aiPath;
+    private Vector3 lastPosition;
 
-    // Update is called once per frame
+    void Start()
+    {
+        lastPosition = transform.position;
+    }
+
     void Update()
     {
-        if(aiPath.desiredVelocity.x >= 0.01)
+        Vector3 delta = transform.position - lastPosition;
+
+        if (delta.x > 0.001f)
         {
-            transform.localScale = new Vector3 (1f, 1f, 1f);
-        } else if (aiPath.desiredVelocity.x <= -0.01f)
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else if (delta.x < -0.001f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
+        lastPosition = transform.position;
     }
+
 }
