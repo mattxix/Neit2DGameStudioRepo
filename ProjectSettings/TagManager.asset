@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Window
   - Cash
+  - WallTriggers
   layers:
   - Default
   - TransparentFX
