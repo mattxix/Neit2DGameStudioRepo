@@ -20,7 +20,7 @@ public class ZombieHealth : MonoBehaviour
         if (zombieHealth <= 0)
         {
             isDead = true; 
-            waveManager?.OnZombieKilled();
+            waveManager?.OnZombieKilled(transform.position);
             Destroy(gameObject);
         }
     }

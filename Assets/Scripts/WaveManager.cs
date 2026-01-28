@@ -15,7 +15,7 @@ public class WaveManager : MonoBehaviour
     public TMP_Text peaceTimeText;
     public Button StartNight;
     public ZombieSpawner ZombieSpawner;
-
+    public GameObject Cash;
     void Start()
     {
         StartNight.gameObject.SetActive(false);
@@ -87,11 +87,12 @@ public class WaveManager : MonoBehaviour
         
     }
 
-    public void OnZombieKilled()
+    public void OnZombieKilled(Vector3 zombiePosition)
     {
         Debug.Log("Zombie Killed");
         Debug.Log(zombiesKilled + 1 + " / " + enemiesPerWave);
         zombiesKilled++;
+        CashDrop(zombiePosition);
         if (zombiesKilled >= enemiesPerWave && isWaveActive)
         {
             Debug.Log("All Zombies Killed");
@@ -106,4 +107,17 @@ public class WaveManager : MonoBehaviour
         Debug.Log("Wave Started");
         StartWave();
     }
+
+    public void CashDrop(Vector3 position)
+    {
+        if (Random.value < 0.3f)
+        {
+            if (Cash != null)
+            {
+                Instantiate(Cash, position, Quaternion.identity);
+                Debug.Log("Cash Dropped");
+            }
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Window
+  - Cash
   layers:
   - Default
   - TransparentFX

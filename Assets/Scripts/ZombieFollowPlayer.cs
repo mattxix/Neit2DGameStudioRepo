@@ -27,10 +27,10 @@ public class ZombieFollowPlayer : MonoBehaviour
         zombieHealth -= amount;
         if (zombieHealth <= 0)
         {
-            WaveManager waveManager = FindObjectOfType<WaveManager>();
+            WaveManager waveManager = Object.FindFirstObjectByType<WaveManager>();
             if (waveManager != null)
             {
-                waveManager.OnZombieKilled();
+                waveManager.OnZombieKilled(transform.position);
             }
             Destroy(gameObject);
         }
