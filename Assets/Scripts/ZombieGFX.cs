@@ -7,23 +7,17 @@ public class ZombieGFX : MonoBehaviour
 
     void Start()
     {
-        lastPosition = transform.position;
     }
 
     void Update()
     {
+        lastPosition = GameObject.Find("Player").transform.position;
+
         Vector3 delta = transform.position - lastPosition;
 
-        if (delta.x > 0.001f)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if (delta.x < -0.001f)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
+        GetComponent<SpriteRenderer>().flipX = (delta.x > 0);
 
-        lastPosition = transform.position;
+       // lastPosition = transform.position;
     }
 
 }

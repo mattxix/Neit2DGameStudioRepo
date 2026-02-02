@@ -8,6 +8,7 @@ TagManager:
   - Window
   - Cash
   - WallTriggers
+  - Furniture
   layers:
   - Default
   - TransparentFX
