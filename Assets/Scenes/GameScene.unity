@@ -15281,7 +15281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &272075780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15700,7 +15700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &297155027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21269,13 +21269,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1703951789846024912, guid: 978409f221fe92b438151e7577f18b75, type: 3}
-      propertyPath: m_SortingOrder
-      value: 14
+    - target: {fileID: 6181698900801420778, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072854044494396590, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: suckDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072854044494396590, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072854044494396590, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8600404590428575931, guid: 978409f221fe92b438151e7577f18b75, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600404590428575931, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44721,7 +44737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1192364939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -62578,6 +62594,8 @@ MonoBehaviour:
   randomMult: 0.5
   simulationSpeed: 1
   ghostPrefab: {fileID: 2904963708644376452, guid: 852a88d731c280c43b513a6fa013db8a, type: 3}
+  minGhostSpeed: 0.3
+  maxGhostSpeed: 0.6
 --- !u!4 &1895446922
 Transform:
   m_ObjectHideFlags: 0

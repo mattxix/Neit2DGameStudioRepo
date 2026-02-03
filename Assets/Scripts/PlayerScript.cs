@@ -41,10 +41,10 @@ public class PlayerScript : MonoBehaviour
         FlipPlayer();
      //   anim.SetFloat("Moving", dir.magnitude);
 
-        if (Input.GetMouseButton(0))
-        {
-            weapon.Fire();
-        }
+      //  if (Input.GetMouseButton(0))
+        //{
+           // weapon.Fire();
+       // }
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -115,7 +115,7 @@ public class PlayerScript : MonoBehaviour
 
 
 
-    public void PlayerAttack(InputAction.CallbackContext ctx)
+  /*public void PlayerAttack(InputAction.CallbackContext ctx)
     {
         if (!isAttacking)
         {
@@ -123,7 +123,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetTrigger("Attack");
             StartCoroutine(AttackCooldown());
         }
-    }
+    }*/
 
     IEnumerator AttackCooldown()
     {

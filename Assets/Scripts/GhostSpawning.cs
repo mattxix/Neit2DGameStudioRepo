@@ -1,4 +1,5 @@
 using System.Collections;
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -15,6 +16,8 @@ public class GhostSpawning : MonoBehaviour
     public float randomMult = .5f;
     public float simulationSpeed = 1.0f;
     public GameObject ghostPrefab;
+    public float minGhostSpeed;
+    public float maxGhostSpeed;
 
     void Start()
     {
@@ -41,7 +44,8 @@ public class GhostSpawning : MonoBehaviour
 
         furnitureItem.GetComponent<Animator>().SetTrigger("PossessFurniture");
         yield return new WaitForSeconds(2);
-        GameObject.Instantiate(ghostPrefab, furnitureItem.transform.position, furnitureItem.transform.rotation);
+        var ghost = GameObject.Instantiate(ghostPrefab, furnitureItem.transform.position, furnitureItem.transform.rotation);
+        ghost.GetComponent<AILerp>().speed = Random.Range(minGhostSpeed, maxGhostSpeed);
 
         ghostsSpawned++;
 

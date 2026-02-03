@@ -9,6 +9,7 @@ TagManager:
   - Cash
   - WallTriggers
   - Furniture
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Colliders
   - Bullets
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
