@@ -24,10 +24,16 @@ public class PlayerScript : MonoBehaviour
     public float dashDistance = 3f;
     public float dashDuration = 0.1f;
     public float dashCooldown = 0.5f;
-
     private Vector2 lastMoveDir = Vector2.right;
     private bool isDashing;
     private bool canDash = true;
+
+    [Header("Animation")]
+    float MoveX = 0f;
+    float MoveY = 0f;
+    float LastMoveX = 0f;
+    float LastMoveY = 0f;
+    
 
     void Start()
     {
@@ -76,8 +82,16 @@ public class PlayerScript : MonoBehaviour
         if (dir != Vector2.zero)
         {
             lastMoveDir = dir;
+
+            anim.SetFloat("LastMoveX", dir.x);
+            anim.SetFloat("LastMoveY", dir.y);
         }
+
+        anim.SetFloat("MoveX", dir.x);
+        anim.SetFloat("MoveY", dir.y);
+        anim.SetFloat("Speed", dir.sqrMagnitude);
     }
+
 
     public void Dash(InputAction.CallbackContext ctx)
     {
