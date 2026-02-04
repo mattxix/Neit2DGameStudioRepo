@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 namespace Pathfinding {
 	/// <summary>
@@ -38,7 +39,7 @@ namespace Pathfinding {
 		void Update () {
 			//Debug.Log(player.transform.position);
 			ai.destination = target.position;
-			//if (player != null && ai != null) ai.destination = player.transform.position;
-		}
+            //if (player != null && ai != null) ai.destination = player.transform.position;
+        }
 	}
 }

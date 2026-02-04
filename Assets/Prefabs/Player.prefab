@@ -239,6 +239,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63082346ada85fd45ad10f76b0b3a5e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suckDistance: 0
+  suckSpeed: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  usageAmt: 0
+  progressBar: {fileID: 0}
+  powerConsumption: 8
+  powerRecharge: 10
 --- !u!1 &7747325218391592619
 GameObject:
   m_ObjectHideFlags: 0
