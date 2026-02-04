@@ -12,6 +12,7 @@ public class GhostHealth : MonoBehaviour
     private float killedAtTime;
     private float endKillTime;
     private float killedAtScale;
+    public int ghostsKilled = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,7 @@ public class GhostHealth : MonoBehaviour
             if (progress >= 1f)
             {
                 GameObject.Destroy(gameObject);
+
             }
         }
     }
@@ -45,6 +47,8 @@ public class GhostHealth : MonoBehaviour
     {
         if (alive)
         {
+            ghostsKilled++;
+            Debug.Log("GHOSTS KILLED: " + ghostsKilled);
             float distance = Vector2.Distance(transform.position, shootFromPoint.position);
 
             alive = false;

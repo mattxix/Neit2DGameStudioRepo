@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public float h, v;
     Vector2 dir;
     public float moveSpeed = 5f;
+    private float speedMultiplier = 1f;
     public Rigidbody2D rb2d;
     public ShotGunScript weapon;
     bool facingLeft = false;
@@ -62,8 +63,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (isDashing) return;
 
-        rb2d.MovePosition(rb2d.position + dir * moveSpeed * Time.fixedDeltaTime);
+        float finalSpeed = moveSpeed * speedMultiplier;
+        rb2d.MovePosition(rb2d.position + dir * finalSpeed * Time.fixedDeltaTime); 
     }
+
 
     public void MovePlayer(InputAction.CallbackContext ctx)
     {
@@ -143,6 +146,11 @@ public class PlayerScript : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+    }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
     }
 }
 

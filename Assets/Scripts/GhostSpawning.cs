@@ -9,7 +9,6 @@ public class GhostSpawning : MonoBehaviour
 
     public float difficulty = .001f;
     private float ghostsSpawned = 0;
-    private int ghostsKilled = 0;
     public float falloff = 0.002f;
     public float capIntensityAtSpawned = 40;
     public float minSpawnRate = 1;
