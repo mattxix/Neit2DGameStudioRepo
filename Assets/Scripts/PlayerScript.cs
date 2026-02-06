@@ -89,7 +89,7 @@ public class PlayerScript : MonoBehaviour
 
         anim.SetFloat("MoveX", dir.x);
         anim.SetFloat("MoveY", dir.y);
-        anim.SetFloat("Speed", dir.sqrMagnitude);
+        //anim.SetFloat("Speed", dir.sqrMagnitude);
     }
 
 
