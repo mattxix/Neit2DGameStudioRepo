@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   suckSpeed: 2
-  shootFromPoint: {fileID: 0}
+  shootFromPoint: {fileID: 8855962364016106391}
   player: {fileID: 1114690343760907836, guid: 978409f221fe92b438151e7577f18b75, type: 3}
   ghostsKilled: 0
 --- !u!114 &-3270003063440579140

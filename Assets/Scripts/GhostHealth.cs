@@ -1,7 +1,5 @@
 using Pathfinding;
-using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 public class GhostHealth : MonoBehaviour
 {
