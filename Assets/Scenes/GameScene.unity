@@ -21889,6 +21889,14 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1703951789846024912, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2049989074959392843, guid: 67fd94c0bfab7164294e2bcb31c9fb15, type: 3}
+    - target: {fileID: 3165711995276129256, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 093f32d3db2df094a9d09791c4682b36, type: 2}
     - target: {fileID: 6181698900801420778, guid: 978409f221fe92b438151e7577f18b75, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -21913,6 +21921,10 @@ PrefabInstance:
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 750485921}
+    - target: {fileID: 8072854044494396590, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+      propertyPath: suckSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8072854044494396590, guid: 978409f221fe92b438151e7577f18b75, type: 3}
       propertyPath: suckDistance
       value: 1
@@ -39412,7 +39424,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ebdef60584f68cc4a9d15bcf3347a558, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5b95e67f74089846aa4fee4942606df, type: 3}
   m_Color: {r: 0.4528302, g: 0.35457456, b: 0.35457456, a: 1}
   m_FlipX: 0
   m_FlipY: 0
