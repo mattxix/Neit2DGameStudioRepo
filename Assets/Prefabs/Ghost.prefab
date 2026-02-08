@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2017029968719872795}
   - component: {fileID: 3317667725173015717}
   - component: {fileID: 1817985990627736752}
-  - component: {fileID: 2429821494284619576}
   - component: {fileID: 2702415919939511121}
   - component: {fileID: 7150606908849851947}
   - component: {fileID: -2544195679622145380}
@@ -146,7 +145,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0044002533, y: -0.0054857954}
+  m_Offset: {x: 0.0017440319, y: 0.00031346455}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -156,22 +155,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.25165892, y: 0.18075477}
+  m_Size: {x: 0.088397264, y: 0.08473506}
   m_EdgeRadius: 0
---- !u!114 &2429821494284619576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2904963708644376452}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ff2026a8bf3c44bb14ef90bbed5008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieHealth: 100
-  player: {fileID: 1114690343760907836, guid: 978409f221fe92b438151e7577f18b75, type: 3}
 --- !u!50 &2702415919939511121
 Rigidbody2D:
   serializedVersion: 5
@@ -227,6 +212,7 @@ MonoBehaviour:
   suckSpeed: 2
   shootFromPoint: {fileID: 0}
   player: {fileID: 1114690343760907836, guid: 978409f221fe92b438151e7577f18b75, type: 3}
+  ghostsKilled: 0
 --- !u!114 &-3270003063440579140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,9 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!68 &1069540879824443103
 EdgeCollider2D:
---- !u!95 &2884943344670592170
-Animator:
-  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -415,15 +398,15 @@ Animator:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.125, y: 0}
-  - {x: 0.125, y: 0}
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -544,8 +527,17 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!95 &2884943344670592170
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873437760437876778}
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 284c3a7d90d717a40a92dc0e5e263b55, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
