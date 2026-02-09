@@ -15,7 +15,9 @@ public class GhostBlasterScript : MonoBehaviour
     public LayerMask playerLayer;
     public float usageAmt;
     private bool overloaded = false;
+    private bool canSuck = true;
     public Image progressBar;
+    public ParticleSystem particleSuck;
 
     public float powerConsumption = 8f;
     public float powerRecharge = 10f;
@@ -29,6 +31,8 @@ public class GhostBlasterScript : MonoBehaviour
         originalColor = progressBar.color;
 
         shootFromPoint = transform.Find("FirePoint").transform;
+
+        
     }
 
     // Update is called once per frame
@@ -38,6 +42,7 @@ public class GhostBlasterScript : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
+                
                 RaycastHit2D hitInfo = Physics2D.Raycast(shootFromPoint.position, shootFromPoint.up, suckDistance, suckDistance, ~playerLayer);
                 // Debug.Log("RAYCASTING");
                 if (hitInfo.collider != null)
@@ -64,11 +69,16 @@ public class GhostBlasterScript : MonoBehaviour
 
                 Debug.DrawLine(transform.position, shootFromPoint.up * suckDistance, Color.red);
                 usageAmt += Time.deltaTime * powerConsumption;
+
+                
+                
             }
             else
             {
                 usageAmt -= Time.deltaTime * powerRecharge;
+                
             }
+            
         }
         usageAmt = Mathf.Clamp(usageAmt, 0f, 100f);
 
@@ -77,9 +87,25 @@ public class GhostBlasterScript : MonoBehaviour
             overloaded = true;
             StartCoroutine(JammedGun());
         }
-        
+
         progressBar.fillAmount = usageAmt / 100;
+
+        if (Input.GetMouseButton(0))
+        {
+            if (overloaded)
+                particleSuck.Stop();
+            else if (!particleSuck.isPlaying)
+                particleSuck.Play();
+
+        }
+        else
+        {
+            if (particleSuck.isPlaying)
+                particleSuck.Stop();
+        }
     }
+
+   
 
     IEnumerator JammedGun()
     {
@@ -100,6 +126,8 @@ public class GhostBlasterScript : MonoBehaviour
 
     }
 
+
+
     IEnumerator LerpColor(Color oldColor, Color newColor)
     {
         for (float i = 0; i < 50; i++)
@@ -108,4 +136,6 @@ public class GhostBlasterScript : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+    
 }
