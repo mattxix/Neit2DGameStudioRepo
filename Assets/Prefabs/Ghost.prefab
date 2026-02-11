@@ -210,9 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alive: 1
   suckSpeed: 2
-  shootFromPoint: {fileID: 8855962364016106391}
+  shootFromPoint: {fileID: 0}
   pointsPerGhost: 1000
-  pointsPopupPrefab: {fileID: 5215145967010086643, guid: 43d912cea306a0645b45be6cd95619db, type: 3}
+  pointsPopupPrefab: {fileID: 2804780104107377162, guid: 736098d6b70e7014d827efe059de437c, type: 3}
   popupOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &-3270003063440579140
 MonoBehaviour:

@@ -48,7 +48,7 @@ public class PlayerStats : MonoBehaviour
     private void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = "Score: " + score.ToString();
+            scoreText.text = score.ToString();
     }
 
     public void StopAndSave()
