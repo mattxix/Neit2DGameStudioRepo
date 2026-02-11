@@ -5,6 +5,7 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("UI")]
     public TMP_Text timerText;         
+    public TMP_Text timerText2;         
     public TMP_Text deathTimerText;  
 
     [Header("State")]
@@ -34,7 +35,8 @@ public class PlayerStats : MonoBehaviour
 
         if (timerText != null)
         {
-            timerText.text = "Time: " + FormatTime(timeAlive);
+            timerText.text = FormatTime(timeAlive);
+            timerText2.text = FormatTime(timeAlive);
         }   
     }
 
