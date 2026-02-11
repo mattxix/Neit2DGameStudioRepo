@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     SpriteRenderer spr;
     Animator anim;
     bool isAttacking;
+    public GameOverScript gameOver;
 
     Vector2 moveDirection;
     Vector2 mousePosition;
@@ -68,6 +69,18 @@ public class PlayerScript : MonoBehaviour
 
         float finalSpeed = moveSpeed * speedMultiplier;
         rb2d.MovePosition(rb2d.position + dir * finalSpeed * Time.fixedDeltaTime); 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision == null) return;
+        if (collision.gameObject.CompareTag("Ghost"))
+        {
+            if (collision.gameObject.GetComponent<GhostHealth>().alive)
+            {
+                gameOver.GameOverScreen();
+            }
+        }
     }
 
 
