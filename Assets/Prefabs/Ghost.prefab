@@ -211,8 +211,9 @@ MonoBehaviour:
   alive: 1
   suckSpeed: 2
   shootFromPoint: {fileID: 8855962364016106391}
-  player: {fileID: 1114690343760907836, guid: 978409f221fe92b438151e7577f18b75, type: 3}
-  ghostsKilled: 0
+  pointsPerGhost: 1000
+  pointsPopupPrefab: {fileID: 5215145967010086643, guid: 43d912cea306a0645b45be6cd95619db, type: 3}
+  popupOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &-3270003063440579140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +376,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3873437760437876778}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

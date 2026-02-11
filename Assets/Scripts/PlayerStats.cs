@@ -4,13 +4,17 @@ using TMPro;
 public class PlayerStats : MonoBehaviour
 {
     [Header("UI")]
-    public TMP_Text timerText;         
-    public TMP_Text deathTimerText;  
+    public TMP_Text timerText;
+    public TMP_Text deathTimerText;
+    public TMP_Text scoreText;  
 
     [Header("State")]
     public bool timerRunning = true;
 
     private float timeAlive;
+
+    [Header("Score")]
+    public int score = 0;
 
     public const string LAST_TIME_KEY = "LAST_SURVIVAL_TIME";
     public const string BEST_TIME_KEY = "BEST_SURVIVAL_TIME";
@@ -20,10 +24,9 @@ public class PlayerStats : MonoBehaviour
         timeAlive = 0f;
         timerRunning = true;
 
-        if (deathTimerText != null)
-        { 
-            deathTimerText.text = "";
-        }
+        if (deathTimerText != null) deathTimerText.text = "";
+
+        UpdateScoreUI();
     }
 
     void Update()
@@ -33,14 +36,24 @@ public class PlayerStats : MonoBehaviour
         timeAlive += Time.deltaTime;
 
         if (timerText != null)
-        {
             timerText.text = "Time: " + FormatTime(timeAlive);
-        }   
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UpdateScoreUI();
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = "Score: " + score.ToString();
     }
 
     public void StopAndSave()
     {
-        if (!timerRunning) return; 
+        if (!timerRunning) return;
 
         timerRunning = false;
 
@@ -56,9 +69,7 @@ public class PlayerStats : MonoBehaviour
         PlayerPrefs.Save();
 
         if (deathTimerText != null)
-        {
             deathTimerText.text = "Survived: " + FormatTime(timeAlive);
-        }
     }
 
     public void ShowSavedTimes()
@@ -67,11 +78,9 @@ public class PlayerStats : MonoBehaviour
         float best = PlayerPrefs.GetFloat(BEST_TIME_KEY, 0f);
 
         if (deathTimerText != null)
-        { 
             deathTimerText.text = "Survived: " + FormatTime(last) + "\nBest: " + FormatTime(best);
-        }
-
     }
+
     private string FormatTime(float seconds)
     {
         int minutes = Mathf.FloorToInt(seconds / 60f);

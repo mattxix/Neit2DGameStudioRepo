@@ -6,54 +6,71 @@ public class GhostHealth : MonoBehaviour
     public bool alive = true;
     public float suckSpeed = 3.0f;
     public Transform shootFromPoint;
-    public Transform player;
+
     private float killedAtTime;
     private float endKillTime;
     private float killedAtScale;
-    public int ghostsKilled = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Points")]
+    public int pointsPerGhost = 1000;
+    public PointsPopUp pointsPopupPrefab;  
+    public Vector3 popupOffset = new Vector3(0f, 1f, 0f);
+
+    private PlayerStats playerStats;
+
     void Start()
     {
         shootFromPoint = GameObject.Find("Player").transform.Find("Weapon").Find("FirePoint");
+
+        // find PlayerStats once
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!alive && shootFromPoint != null)
         {
             float step = suckSpeed * Time.deltaTime;
-
-            // Move the object towards the target position
             transform.position = Vector2.MoveTowards(transform.position, shootFromPoint.position, step);
-            
 
-            float progress = Mathf.Abs(killedAtTime-Time.time) / (endKillTime-killedAtTime);
-            //Debug.Log("TIME IS " + Mathf.Abs(killedAtTime - Time.time) + " DIVIDED BY  " + (endKillTime - killedAtTime));
-            transform.Find("Visual").transform.localScale = Vector3.one * Mathf.Lerp(killedAtScale, 0, progress);
+            float progress = Mathf.Abs(killedAtTime - Time.time) / (endKillTime - killedAtTime);
+
+            transform.Find("Visual").transform.localScale =
+                Vector3.one * Mathf.Lerp(killedAtScale, 0, progress);
 
             if (progress >= 1f)
             {
-                GameObject.Destroy(gameObject);
-
+                Destroy(gameObject);
             }
         }
     }
 
     public void Kill()
     {
-        if (alive)
-        {
-            ghostsKilled++;
-            Debug.Log("GHOSTS KILLED: " + ghostsKilled);
-            float distance = Vector2.Distance(transform.position, shootFromPoint.position);
 
-            alive = false;
-            killedAtTime = Time.time;
-            endKillTime = Time.time + (distance*.5f);
-            killedAtScale = transform.localScale.y;
-            GetComponent<AILerp>().enabled = false;
+        if (!alive) return;
+
+        alive = false;
+
+        // Award points ONCE, right when kill starts
+        if (playerStats != null)
+            playerStats.AddScore(pointsPerGhost);
+
+        // Spawn popup
+        if (pointsPopupPrefab != null)
+        {
+            Debug.Log("Spawning popup at: " + (transform.position + popupOffset));
+
+            Vector3 spawnPos = transform.position + popupOffset;
+            PointsPopUp popup = Instantiate(pointsPopupPrefab, spawnPos, Quaternion.identity);
+            popup.Setup(pointsPerGhost);
         }
-    }   
+
+        float distance = Vector2.Distance(transform.position, shootFromPoint.position);
+        killedAtTime = Time.time;
+        endKillTime = Time.time + (distance * .5f);
+        killedAtScale = transform.localScale.y;
+
+        GetComponent<AILerp>().enabled = false;
+    }
 }
