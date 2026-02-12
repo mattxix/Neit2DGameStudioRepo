@@ -16,6 +16,7 @@ public class GhostBlasterScript : MonoBehaviour
     public float usageAmt;
     private bool overloaded = false;
     private bool canSuck = true;
+    private bool canClickBurst = true;
     public Image progressBar;
     public ParticleSystem particleSuck;
 
@@ -43,6 +44,7 @@ public class GhostBlasterScript : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 
+
                 RaycastHit2D hitInfo = Physics2D.Raycast(shootFromPoint.position, shootFromPoint.up, suckDistance, suckDistance, ~playerLayer);
                 // Debug.Log("RAYCASTING");
                 if (hitInfo.collider != null)
@@ -103,9 +105,26 @@ public class GhostBlasterScript : MonoBehaviour
             if (particleSuck.isPlaying)
                 particleSuck.Stop();
         }
+
+        //if (Input.GetMouseButton(0) && canClickBurst)
+        //{
+        //    StartCoroutine(ClickBurst());
+        //}
     }
 
-   
+   //IEnumerator ClickBurst()
+   // {
+   //     yield return new WaitForSeconds(.1f);
+   //     if (canClickBurst && !Input.GetMouseButton(0))
+   //     {
+   //         usageAmt += 10f;
+   //         canClickBurst = false;
+   //     }
+
+   //         yield return new WaitForSeconds(.2f);
+   //     canClickBurst = true;
+
+   // }
 
     IEnumerator JammedGun()
     {
