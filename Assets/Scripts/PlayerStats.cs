@@ -7,8 +7,8 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text timerText;         
     public TMP_Text timerText2;         
     public TMP_Text deathTimerText;  
-    public TMP_Text scoreText;  
-
+    public TMP_Text scoreText;
+    
     [Header("State")]
     public bool timerRunning = true;
 
