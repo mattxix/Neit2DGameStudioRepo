@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     Animator anim;
     bool isAttacking;
     public GameOverScript gameOver;
+    public PlayerStats playerStats;
 
     Vector2 moveDirection;
     Vector2 mousePosition;
@@ -32,7 +33,10 @@ public class PlayerScript : MonoBehaviour
     float MoveY = 0f;
     float LastMoveX = 0f;
     float LastMoveY = 0f;
+
     
+
+
 
     void Start()
     {
@@ -78,7 +82,9 @@ public class PlayerScript : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<GhostHealth>().alive)
             {
+                playerStats.OnDeath();
                 gameOver.GameOverScreen();
+                
             }
         }
     }

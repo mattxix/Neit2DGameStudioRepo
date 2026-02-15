@@ -15,4 +15,5 @@ public class FollowCursor : MonoBehaviour
         mousePos.z = 10f; // distance from camera
         transform.position = Camera.main.ScreenToWorldPoint(mousePos);
     }
+
 }

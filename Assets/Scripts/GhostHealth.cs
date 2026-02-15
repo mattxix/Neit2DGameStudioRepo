@@ -85,6 +85,9 @@ public class GhostHealth : MonoBehaviour
 
         alive = false;
 
+        if(playerStats != null)
+        playerStats.GhostSucked();
+
         // Start suck/shrink timing
         if (shootFromPoint != null)
         {

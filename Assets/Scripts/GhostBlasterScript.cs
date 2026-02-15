@@ -18,9 +18,11 @@ public class GhostBlasterScript : MonoBehaviour
     private bool canSuck = true;
     public Image progressBar;
     public ParticleSystem particleSuck;
+    public PlayerStats playerStats;
 
     public float powerConsumption = 8f;
     public float powerRecharge = 10f;
+    
 
     Color originalColor;
 
@@ -56,6 +58,7 @@ public class GhostBlasterScript : MonoBehaviour
                         var ghost = hitInfo.collider.gameObject;
 
                         ghost.GetComponent<GhostHealth>().Kill();
+                        
                         //float step = suckSpeed * Time.deltaTime;
 
                         // Move the object towards the target position
