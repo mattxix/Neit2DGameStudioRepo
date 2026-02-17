@@ -22,7 +22,12 @@ public class GhostBlasterScript : MonoBehaviour
 
     public float powerConsumption = 8f;
     public float powerRecharge = 10f;
-    
+
+    [Header("Audio")]
+    public AudioSource vacuumAudioSource;   
+    public AudioClip vacuumLoopClip;       
+    public float vacuumVolume = 1f;
+
 
     Color originalColor;
 
@@ -34,7 +39,13 @@ public class GhostBlasterScript : MonoBehaviour
 
         shootFromPoint = transform.Find("FirePoint").transform;
 
-        
+        if (vacuumAudioSource != null)
+        {
+            vacuumAudioSource.clip = vacuumLoopClip;
+            vacuumAudioSource.loop = true;
+            vacuumAudioSource.playOnAwake = false;
+            vacuumAudioSource.volume = vacuumVolume;
+        }
     }
 
     // Update is called once per frame
@@ -44,7 +55,27 @@ public class GhostBlasterScript : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                
+                if (overloaded)
+                {
+                    if (particleSuck.isPlaying) particleSuck.Stop();
+                }
+                else
+                {
+                    if (!particleSuck.isPlaying) particleSuck.Play();
+                }
+
+                if (vacuumAudioSource != null)
+                {
+                    if (overloaded)
+                    {
+                        if (vacuumAudioSource.isPlaying) vacuumAudioSource.Stop();
+                    }
+                    else
+                    {
+                        if (!vacuumAudioSource.isPlaying) vacuumAudioSource.Play();
+                    }
+                }
+
                 RaycastHit2D hitInfo = Physics2D.Raycast(shootFromPoint.position, shootFromPoint.up, suckDistance, suckDistance, ~playerLayer);
                 // Debug.Log("RAYCASTING");
                 if (hitInfo.collider != null)
@@ -79,7 +110,12 @@ public class GhostBlasterScript : MonoBehaviour
             else
             {
                 usageAmt -= Time.deltaTime * powerRecharge;
-                
+                if (particleSuck.isPlaying) particleSuck.Stop();
+
+                if (vacuumAudioSource != null && vacuumAudioSource.isPlaying)
+                {
+                    vacuumAudioSource.Stop();
+                }
             }
             
         }
