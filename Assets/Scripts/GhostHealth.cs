@@ -17,6 +17,7 @@ public class GhostHealth : MonoBehaviour
     public PointsPopUp pointsPopupPrefab;
     public Vector3 popupOffset = new Vector3(0f, 0.2f, 0f); 
 
+
     [Header("Popup Rendering")]
     public float popupZ = 0f;            
     public float popupWorldScale = 0.05f;
@@ -25,11 +26,16 @@ public class GhostHealth : MonoBehaviour
     private PlayerStats playerStats;
     private Transform visual;
 
+    [Header("Audio")]
+    public AudioScript audioScript;
+    
+
     // Makes sure we only award/spawn once
     private bool awardedPoints = false;
 
     void Start()
     {
+
         visual = transform.Find("Visual");
 
         GameObject playerObj = GameObject.Find("Player");
@@ -50,6 +56,9 @@ public class GhostHealth : MonoBehaviour
         {
             Debug.LogError("GhostHealth: PlayerStats not found on Player.");
         }
+
+        
+
     }
 
     void Update()
@@ -84,8 +93,8 @@ public class GhostHealth : MonoBehaviour
         if (!alive) return;
 
         alive = false;
-
-        if(playerStats != null)
+        
+        if (playerStats != null)
         playerStats.GhostSucked();
 
         // Start suck/shrink timing
@@ -112,6 +121,10 @@ public class GhostHealth : MonoBehaviour
     {
         if (awardedPoints) return;
         awardedPoints = true;
+
+        audioScript = FindFirstObjectByType<AudioScript>();
+        if (audioScript != null)
+        audioScript.PlayPointsSound();
 
         // Award points
         if (playerStats != null)

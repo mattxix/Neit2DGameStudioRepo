@@ -6,12 +6,16 @@ public class PointsPopUp : MonoBehaviour
     public TMP_Text text;
     public float floatUpSpeed = 1.5f;
     public float lifeTime = 0.8f;
+    
+    
 
     private float t;
 
     public void Setup(int amount)
     {
+        
         if (text != null) text.text = amount.ToString();
+        
     }
 
     void Update()

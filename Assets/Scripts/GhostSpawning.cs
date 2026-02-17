@@ -17,6 +17,10 @@ public class GhostSpawning : MonoBehaviour
     public GameObject ghostPrefab;
     public float minGhostSpeed;
     public float maxGhostSpeed;
+    public AudioClip[] ghostSpawnAudio;
+    public AudioSource audioSource;
+
+
 
     void Start()
     {
@@ -45,6 +49,9 @@ public class GhostSpawning : MonoBehaviour
         yield return new WaitForSeconds(2);
         var ghost = GameObject.Instantiate(ghostPrefab, furnitureItem.transform.position, furnitureItem.transform.rotation);
         ghost.GetComponent<AILerp>().speed = Random.Range(minGhostSpeed, maxGhostSpeed);
+
+        audioSource.PlayOneShot(
+            ghostSpawnAudio[Random.Range(0, ghostSpawnAudio.Length)]);
 
         ghostsSpawned++;
 
