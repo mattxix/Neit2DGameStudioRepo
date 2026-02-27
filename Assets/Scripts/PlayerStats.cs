@@ -4,6 +4,8 @@ using System.Collections;
 
 public class PlayerStats : MonoBehaviour
 {
+    public ShieldScript shieldScript;
+
     [Header("UI")]
     public TMP_Text timerText;         
     public TMP_Text timerText2;         
@@ -146,5 +148,9 @@ public class PlayerStats : MonoBehaviour
     public void GhostSucked()
     {
         ghostKilled++;
+        if (ghostKilled % shieldScript.requiredKills == 0 && !shieldScript.shieldActive)
+        {
+            shieldScript.AppearShield();
+        }
     }
 }
