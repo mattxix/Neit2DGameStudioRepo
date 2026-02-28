@@ -85140,7 +85140,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: e9b43f7a3d68ee74db6585ce7ff31761, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -196875,6 +196875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1250eb2f61797b45a735cfd6a626e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldScript: {fileID: 0}
   timerText: {fileID: 271040559}
   timerText2: {fileID: 1388330287}
   deathTimerText: {fileID: 445401380}
@@ -196908,7 +196909,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0974e35aa4e34c94daed21e612174836, type: 3}
+  m_Resource: {fileID: 8300000, guid: a456347e7a4c8fd4c9ee7c2af1fbc2d7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -207446,6 +207447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1667892445}
   player: {fileID: 378892723}
+  requiredKills: 3
+  shieldActive: 0
 --- !u!1 &1680727285
 GameObject:
   m_ObjectHideFlags: 0
@@ -238633,7 +238636,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 9b522efd3e78fc04084af56308ed2c32, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
