@@ -5,8 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class GhostSpawning : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    // Difficulty / Scaling
     public float difficulty = .001f;
     private float ghostsSpawned = 0;
     public float falloff = 0.002f;
@@ -14,44 +13,50 @@ public class GhostSpawning : MonoBehaviour
     public float minSpawnRate = 1;
     public float randomMult = .5f;
     public float simulationSpeed = 1.0f;
+
+    // Ghost Settings
     public GameObject ghostPrefab;
     public float minGhostSpeed;
     public float maxGhostSpeed;
+
+    // Audio
     public AudioClip[] ghostSpawnAudio;
     public AudioSource audioSource;
-
-
 
     void Start()
     {
         StartCoroutine(SpawnGhosts());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 
     GameObject PickFurniture()
     {
         GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Furniture");
-
         int randomIndex = Random.Range(0, objectsWithTag.Length);
-
         return objectsWithTag[randomIndex];
     }
 
     IEnumerator SpawnGhost(GameObject furnitureItem)
     {
-
         furnitureItem.GetComponent<Animator>().SetTrigger("PossessFurniture");
+
         yield return new WaitForSeconds(2);
-        var ghost = GameObject.Instantiate(ghostPrefab, furnitureItem.transform.position, furnitureItem.transform.rotation);
-        ghost.GetComponent<AILerp>().speed = Random.Range(minGhostSpeed, maxGhostSpeed);
+
+        var ghost = GameObject.Instantiate(
+            ghostPrefab,
+            furnitureItem.transform.position,
+            furnitureItem.transform.rotation
+        );
+
+        ghost.GetComponent<AILerp>().speed =
+            Random.Range(minGhostSpeed, maxGhostSpeed);
 
         audioSource.PlayOneShot(
-            ghostSpawnAudio[Random.Range(0, ghostSpawnAudio.Length)]);
+            ghostSpawnAudio[Random.Range(0, ghostSpawnAudio.Length)]
+        );
 
         ghostsSpawned++;
 
@@ -62,15 +67,19 @@ public class GhostSpawning : MonoBehaviour
     {
         while (true)
         {
+            float randomValue =
+                (falloff) * Mathf.Pow(ghostsSpawned - capIntensityAtSpawned, 2)
+                + minSpawnRate;
 
-            float randomValue = (falloff) * Mathf.Pow(ghostsSpawned - capIntensityAtSpawned, 2) + minSpawnRate;
-            if(ghostsSpawned >= capIntensityAtSpawned)
+            if (ghostsSpawned >= capIntensityAtSpawned)
             {
                 randomValue = minSpawnRate;
             }
-          //  Debug.Log(randomValue);
 
-            randomValue = randomValue * Random.Range(1 - randomMult, 1 + randomMult);
+            // Debug.Log(randomValue);
+
+            randomValue *= Random.Range(1 - randomMult, 1 + randomMult);
+
             GameObject furnitureItem = PickFurniture();
 
             if (ghostsSpawned == 0)
@@ -79,8 +88,8 @@ public class GhostSpawning : MonoBehaviour
             }
 
             StartCoroutine(SpawnGhost(furnitureItem));
+
             yield return new WaitForSeconds(randomValue);
         }
-
     }
 }

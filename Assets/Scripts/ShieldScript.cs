@@ -5,8 +5,12 @@ public class ShieldScript : MonoBehaviour
     public Animator animator;
     public Transform player;
 
+    [Header("RandomRangeOfKills")]
+    public int min;
+    public int max;
+
     [SerializeField]
-    public int requiredKills = 3;
+    public int requiredKills;
     public bool shieldActive = false;
 
 
@@ -15,6 +19,8 @@ public class ShieldScript : MonoBehaviour
     void Start()
     {
         //AppearShield();
+        requiredKills = Random.Range(min, max);
+        gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
     // Update is called once per frame
@@ -25,11 +31,11 @@ public class ShieldScript : MonoBehaviour
 
     public void AppearShield()
     {
-        requiredKills = Random.Range(5, 12);
+        
         Debug.Log("REQUIREDKILLS: "+requiredKills);
         animator.SetTrigger("Appear");
-        gameObject.GetComponent<Collider2D>().enabled = true;
-        hits = 2;
+        GetComponent<Collider2D>().enabled = true;
+        hits = 1;
         shieldActive = true;
     }
 
@@ -37,6 +43,7 @@ public class ShieldScript : MonoBehaviour
     {
         animator.SetTrigger("Pop"); 
         gameObject.GetComponent<Collider2D>().enabled = false;
+        requiredKills = Random.Range(5, 12);
         shieldActive = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)

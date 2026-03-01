@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Stats")]
     public int ghostKilled = 0;
+    private int killsSinceShield;
 
     [Header("Scripts")]
     public PlayerScript PlayerScript;
@@ -148,8 +149,12 @@ public class PlayerStats : MonoBehaviour
     public void GhostSucked()
     {
         ghostKilled++;
-        if (ghostKilled % shieldScript.requiredKills == 0 && !shieldScript.shieldActive)
+        killsSinceShield++;
+
+        if (!shieldScript.shieldActive &&
+            killsSinceShield >= shieldScript.requiredKills)
         {
+            killsSinceShield = 0;
             shieldScript.AppearShield();
         }
     }
