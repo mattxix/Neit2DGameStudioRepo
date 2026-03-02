@@ -10,10 +10,13 @@ public class StormManager : MonoBehaviour
     public Color endLightColor;
     public float lightningDuration = .05f;
 
+    private AudioSource thunderSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startLightColor = globalLight.color;
+        thunderSound = GetComponent<AudioSource>();
         StartCoroutine(Storm());
     }
 
@@ -29,6 +32,7 @@ public class StormManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(1, 20));
             globalLight.color = endLightColor;
+            thunderSound.Play();
             yield return new WaitForSeconds(lightningDuration);
             globalLight.color = startLightColor;
         }
