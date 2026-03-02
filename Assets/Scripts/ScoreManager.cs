@@ -12,6 +12,23 @@ public class ScoreManager : MonoBehaviour
     public UnityEvent<string, int> submitScoreEvent;
     public void SubmitScore()
     {
-        submitScoreEvent.Invoke(inputName.text, int.Parse(inputScore.text));
+        
+        string rawName = inputName.text;
+        string rawScore = inputScore.text;
+
+        string cleanedScore = rawScore.Trim()
+                                      .Replace(",", "")
+                                      .Replace("Score:", "")
+                                      .Replace("score:", "")
+                                      .Trim();
+
+        if (!int.TryParse(cleanedScore, out int parsedScore))
+        {
+            Debug.LogError($"Score parse failed. rawScore='{rawScore}' cleanedScore='{cleanedScore}'");
+            return;
+        }
+
+        Debug.Log($"About to submit. name='{rawName}' rawScore='{rawScore}' parsedScore={parsedScore}");
+        submitScoreEvent.Invoke(rawName, parsedScore);
     }
 }

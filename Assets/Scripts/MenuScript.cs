@@ -8,8 +8,6 @@ public class MenuScript : MonoBehaviour
 
    public void StartButton()
     {
-        NamePanel.SetActive(true);
-
         SceneManager.LoadScene(1);
     }
 

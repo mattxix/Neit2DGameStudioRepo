@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     bool isAttacking;
     public GameOverScript gameOver;
     public PlayerStats playerStats;
-
+    public Canvas leaderBoardCanvas;
     Vector2 moveDirection;
     Vector2 mousePosition;
 
@@ -84,7 +84,9 @@ public class PlayerScript : MonoBehaviour
             {
                 playerStats.OnDeath();
                 gameOver.GameOverScreen();
-                
+                WaitForSeconds wait = new WaitForSeconds(3f);
+                leaderBoardCanvas.gameObject.SetActive(true);
+
             }
         }
     }
