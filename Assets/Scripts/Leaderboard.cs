@@ -1,32 +1,42 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using Dan.Main;
+using System.Security.Cryptography.X509Certificates;
+using UnityEngine.Events;
 public class Leaderboard : MonoBehaviour
 {
+    [SerializeField]
+    private List<TextMeshProUGUI> names;
+    [SerializeField]
+    private List<TextMeshProUGUI> scores;
 
-    public string password;
-    public string enteredName;
-    public TMP_Text NameDisplay;
-    public int nameLength;
-    public Canvas Namepanel;
+    private string publicLeaderboardKey = "3e1e098c93083a73460169c5ce32989c999a5d5132358e4e68995085115bd0e5";
 
-
-    void Start()
+    private void Start()
     {
-        nameLength = 3;
-        NameDisplay.text = "Enter Name";
+        GetLeaderboard();
     }
-
-    void Update()
+    public void GetLeaderboard()
     {
-        if (enteredName.Length == nameLength)
+        LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, ((msg) =>
         {
-           Cursor.lockState = CursorLockMode.Locked;
-        }
+            int loopLength = (msg.Length < names.Count) ? msg.Length : names.Count;
+            for (int i = 0; i < loopLength; i++)
+            {
+                names[i].text = msg[i].Username;
+                scores[i].text = msg[i].Score.ToString();
+
+            }
+        }));
     }
 
-    private void EnterName()
+    public void SetLeaderboardEntry(string username, int score)
     {
-        NameDisplay.text = enteredName;
+        LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, ((msg) => {
+            username.Substring(0, 3);
+            GetLeaderboard();
+        }));
     }
 }
