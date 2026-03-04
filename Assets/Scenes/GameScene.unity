@@ -238823,12 +238823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d9fca1b11f6a64ab139dc8efe33cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0.001
-  falloff: 0.002
-  capIntensityAtSpawned: 40
-  minSpawnRate: 1
-  randomMult: 0.25
-  simulationSpeed: 1
   ghostPrefab: {fileID: 2904963708644376452, guid: 852a88d731c280c43b513a6fa013db8a, type: 3}
   minGhostSpeed: 0.3
   maxGhostSpeed: 0.6
@@ -265519,7 +265513,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089897300}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 348900049}
+        m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089897300
 MonoBehaviour:
   m_ObjectHideFlags: 0

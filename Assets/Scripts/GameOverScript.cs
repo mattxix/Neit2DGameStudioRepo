@@ -52,5 +52,10 @@ public class GameOverScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
 }

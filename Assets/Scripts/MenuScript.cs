@@ -3,13 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public GameObject LeaderBoard;
 
-    public GameObject NamePanel;
-
-   public void StartButton()
+    public void OpenLeaderBoard()
     {
-        NamePanel.SetActive(true);
+       
+       LeaderBoard.SetActive(true);
+     
+    }
 
+    public void CloseLeaderBoard()
+    {
+
+        LeaderBoard.SetActive(false);
+
+    }
+
+    public void StartButton()
+    {
         SceneManager.LoadScene(1);
     }
 
